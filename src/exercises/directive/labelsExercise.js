@@ -14,6 +14,10 @@ angular.module('app.exercises').directive('labelsExercise', () => {
     $scope.$watch('exercise', () =>
       $scope.exercise.words = $scope.exercise.pictures.map(picture => picture.correct));
 
-    this.isCorrect = picture => picture.answer === picture.correct;
+    this.isCorrect = picture => uniform(picture.answer) === uniform(picture.correct);
+
+    function uniform(str) {
+      return str.replace(/ /g, ' ').trim().toLowerCase();
+    }
   }
 });

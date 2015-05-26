@@ -59,8 +59,12 @@ angular.module('app.exercises').directive('labelsExercise', function () {
     });
 
     this.isCorrect = function (picture) {
-      return picture.answer === picture.correct;
+      return uniform(picture.answer) === uniform(picture.correct);
     };
+
+    function uniform(str) {
+      return str.replace(/ /g, ' ').trim().toLowerCase();
+    }
   }
 });
 angular.module('app.exercises').directive('textExercise', function () {
