@@ -1,6 +1,6 @@
 .exercise {
   background-color: #ececec;
-  height: 450px;
+  height: 540px;
   overflow: hidden;
   padding: {
     top: 10px;
@@ -51,5 +51,35 @@
   li {
     display: inline;
     padding: 5px;
+  }
+}
+
+.what-you-see {
+  overflow: hidden;
+
+  .picture {
+    float: left;
+    margin: 10px;
+
+    img {
+      width: 160px;
+      height: 110px;
+    }
+  }
+}
+
+.what-answers {
+  overflow: hidden;
+
+  .answer {
+    float: left;
+    width: 33%;
+    margin-top: 10px;
+
+    input {
+      width: 3em;
+      border-radius: 5px;
+      border: 1px #808080 solid;
+    }
   }
 }

@@ -1,9 +1,14 @@
+<h1 ng-if="Exercise.currentMain.title">{{Exercise.currentMain.title}}<br></h1>
+<h2>{{Exercise.current.title}}</h2>
 <div class="exercise-widget" ng-switch="Exercise.current.type">
   <div ng-switch-when="text">
     <text-exercise exercise="Exercise.current"></text-exercise>
   </div>
   <div ng-switch-when="labels">
     <labels-exercise exercise="Exercise.current" check="Exercise.check"></labels-exercise>
+  </div>
+  <div ng-switch-when="what-you-see">
+    <what-you-see exercise="Exercise.current" check="Exercise.check"></what-you-see>
   </div>
   <div ng-switch-default>
     Unknown type of exercise!

@@ -8,6 +8,7 @@ angular.module('app.exercises').directive('exercise', () => {
 
   function Exercise(Exercises, $rootScope) {
     this.current = Exercises.getCurrent();
+    this.currentMain = Exercises.getCurrentMain();
     this.check = false;
     this.switchCheck = () => {
       this.check = !this.check;
@@ -22,6 +23,10 @@ angular.module('app.exercises').directive('exercise', () => {
     };
 
     $rootScope.$on('app.exercises::new-position',
-      () => this.current = Exercises.getCurrent());
+      () => {
+        this.current = Exercises.getCurrent();
+        this.currentMain = Exercises.getCurrentMain();
+        this.check = false;
+      });
   }
 });

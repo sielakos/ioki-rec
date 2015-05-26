@@ -4,6 +4,7 @@
  */
 angular.module('app.exercises').factory('Exercises', ($rootScope) => {
   var labelsExercise = {
+    title: 'Label the weather symbols.',
     type: 'labels',
     pictures: [
       {
@@ -33,6 +34,43 @@ angular.module('app.exercises').factory('Exercises', ($rootScope) => {
     ]
   };
 
+  var whatYouSeeExercise = {
+    title: 'What school activities do you see on the picture?',
+    type: 'what-you-see',
+    pictures: [
+      {
+        img: 'images/pictures/exercise1/1.png',
+        text: 'doing a project',
+        index: 5
+      },
+      {
+        img: 'images/pictures/exercise1/2.png',
+        text: 'enjoying a field trip',
+        index: 1
+      },
+      {
+        img: 'images/pictures/exercise1/3.png',
+        text: 'working on computers',
+        index: 2
+      },
+      {
+        img: 'images/pictures/exercise1/4.png',
+        text: 'taking a test',
+        index: 4
+      },
+      {
+        img: 'images/pictures/exercise1/5.png',
+        text: 'giving a presentation',
+        index: 3
+      },
+      {
+        img: 'images/pictures/exercise1/6.png',
+        text: 'practicing yoga',
+        index: 0
+      }
+    ]
+  };
+
   var exercises = [
     {
       active: false,
@@ -55,10 +93,11 @@ angular.module('app.exercises').factory('Exercises', ($rootScope) => {
       ]
     },
     {
+      title: 'Exercise 3 Vocabulary',
       active: true,
       subs: [
         labelsExercise,
-        {type: 'text', text: 'sub2 mock'}
+        whatYouSeeExercise
       ]
     },
     {
@@ -84,6 +123,7 @@ angular.module('app.exercises').factory('Exercises', ($rootScope) => {
   return {
     getExercises,
     getCurrent,
+    getCurrentMain,
     setPosition,
     getCurrentPosition
   };
@@ -97,6 +137,10 @@ angular.module('app.exercises').factory('Exercises', ($rootScope) => {
     if (exercises[main] && exercises[main].subs[sub]) {
       return exercises[main].subs[sub];
     }
+  }
+
+  function getCurrentMain() {
+    return exercises[currentPosition.main];
   }
 
   function setPosition(main, sub) {

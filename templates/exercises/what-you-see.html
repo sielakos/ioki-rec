@@ -1,0 +1,15 @@
+<div class="what-you-see">
+  <div ng-repeat="picture in exercise.pictures | orderBy: 'index'" class="picture">
+    <b>{{picture.index + 1}}</b><br>
+    <img ng-src="{{picture.img}}">
+  </div>
+</div>
+
+<div class="what-answers">
+  <div class="answer" ng-repeat="picture in exercise.pictures">
+    <img src="images/icons/wrong.png" ng-if="check && WhatYouSee.isCorrect(picture)">
+    <img src="images/icons/correct.png" ng-if="check && !WhatYouSee.isCorrect(picture)">
+    <input ng-disabled="check" type="number" ng-model="picture.answer">
+    {{picture.text}}
+  </div>
+</div>

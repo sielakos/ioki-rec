@@ -7,7 +7,7 @@
 
 .exercise {
   background-color: #ececec;
-  height: 450px;
+  height: 540px;
   overflow: hidden;
   padding-top: 10px;
   padding-left: 40px;
@@ -45,6 +45,26 @@
   .words-list li {
     display: inline;
     padding: 5px; }
+
+.what-you-see {
+  overflow: hidden; }
+  .what-you-see .picture {
+    float: left;
+    margin: 10px; }
+    .what-you-see .picture img {
+      width: 160px;
+      height: 110px; }
+
+.what-answers {
+  overflow: hidden; }
+  .what-answers .answer {
+    float: left;
+    width: 33%;
+    margin-top: 10px; }
+    .what-answers .answer input {
+      width: 3em;
+      border-radius: 5px;
+      border: 1px #808080 solid; }
 
 .navigation {
   height: 200px; }
