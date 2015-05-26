@@ -1,0 +1,12 @@
+<div class="labels">
+  <div ng-repeat="picture in exercise.pictures" class="picture">
+    <img ng-src="{{picture.img}}"><br>
+    <input ng-disabled="check" type="text" ng-model="picture.answer">
+    <img src="images/icons/wrong.png" ng-if="check && LabelsExercise.isCorrect(picture)">
+    <img src="images/icons/correct.png" ng-if="check && !LabelsExercise.isCorrect(picture)">
+  </div>
+</div>
+
+<ul class="words-list">
+  <li ng-repeat="word in exercise.words">{{word}}</li>
+</ul>

@@ -3,6 +3,36 @@
  * It broadcasts 'app.exercises::new-position' event on $rootScope when current position changes.
  */
 angular.module('app.exercises').factory('Exercises', ($rootScope) => {
+  var labelsExercise = {
+    type: 'labels',
+    pictures: [
+      {
+        img: 'images/pictures/exercise2/1.png',
+        correct: 'foggy'
+      },
+      {
+        img: 'images/pictures/exercise2/2.png',
+        correct: 'raining'
+      },
+      {
+        img: 'images/pictures/exercise2/3.png',
+        correct: 'sunny'
+      },
+      {
+        img: 'images/pictures/exercise2/4.png',
+        correct: 'cloudy'
+      },
+      {
+        img: 'images/pictures/exercise2/5.png',
+        correct: 'windy'
+      },
+      {
+        img: 'images/pictures/exercise2/6.png',
+        correct: 'snowing'
+      }
+    ]
+  };
+
   var exercises = [
     {
       active: false,
@@ -27,7 +57,7 @@ angular.module('app.exercises').factory('Exercises', ($rootScope) => {
     {
       active: true,
       subs: [
-        {type: 'text', text: 'sub1 mock'},
+        labelsExercise,
         {type: 'text', text: 'sub2 mock'}
       ]
     },

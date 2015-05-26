@@ -1,6 +1,13 @@
+$nav-color: #899fe6;
+$nav-active-color: darken($nav-color, 20%);
+
 .content {
   width: 800px;
   margin: auto;
+}
+
+.clear {
+  clear: both;
 }
 
 @import "exercise";

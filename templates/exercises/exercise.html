@@ -1,8 +1,15 @@
-<div ng-switch="Exercise.current.type">
+<div class="exercise-widget" ng-switch="Exercise.current.type">
   <div ng-switch-when="text">
     <text-exercise exercise="Exercise.current"></text-exercise>
+  </div>
+  <div ng-switch-when="labels">
+    <labels-exercise exercise="Exercise.current" check="Exercise.check"></labels-exercise>
   </div>
   <div ng-switch-default>
     Unknown type of exercise!
   </div>
 </div>
+<button class="exercise-check"
+        ng-click="Exercise.switchCheck()">
+  <img ng-src="{{Exercise.switchImg()}}">
+</button>

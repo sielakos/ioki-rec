@@ -4,39 +4,34 @@ angular.module('app', ['templates', 'app.exercises', 'app.navigation']);
 angular.module('templates', []);
 angular.module('app.exercises', []);
 angular.module('app.navigation', []);
-angular.module('app.exercises').directive('exercise', function () {
-  Exercise.$inject = ["Exercises", "$rootScope"];
-  return {
-    restrict: 'E',
-    templateUrl: 'exercises/exercise.html',
-    controller: Exercise,
-    controllerAs: 'Exercise'
-  };
-
-  function Exercise(Exercises, $rootScope) {
-    var _this = this;
-
-    this.current = Exercises.getCurrent();
-
-    $rootScope.$on('app.exercises::new-position', function () {
-      return _this.current = Exercises.getCurrent();
-    });
-  }
-});
-angular.module('app.exercises').directive('textExercise', function () {
-  return {
-    restrict: 'E',
-    templateUrl: 'exercises/text-exercise.html',
-    scope: {
-      exercise: '='
-    }
-  };
-});
 /**
  * Service that keeps exercises list and current exercise position.
  * It broadcasts 'app.exercises::new-position' event on $rootScope when current position changes.
  */
 angular.module('app.exercises').factory('Exercises', ["$rootScope", function ($rootScope) {
+  var labelsExercise = {
+    type: 'labels',
+    pictures: [{
+      img: 'images/pictures/exercise2/1.png',
+      correct: 'foggy'
+    }, {
+      img: 'images/pictures/exercise2/2.png',
+      correct: 'raining'
+    }, {
+      img: 'images/pictures/exercise2/3.png',
+      correct: 'sunny'
+    }, {
+      img: 'images/pictures/exercise2/4.png',
+      correct: 'cloudy'
+    }, {
+      img: 'images/pictures/exercise2/5.png',
+      correct: 'windy'
+    }, {
+      img: 'images/pictures/exercise2/6.png',
+      correct: 'snowing'
+    }]
+  };
+
   var exercises = [{
     active: false,
     subs: [{ type: 'text', text: 'sub1 mock' }, { type: 'text', text: 'sub2 mock' }, { type: 'text', text: 'sub3 mock' }, { type: 'text', text: 'sub4 mock' }, { type: 'text', text: 'sub5 mock' }, { type: 'text', text: 'sub6 mock' }, { type: 'text', text: 'sub7 mock' }]
@@ -45,7 +40,7 @@ angular.module('app.exercises').factory('Exercises', ["$rootScope", function ($r
     subs: [{ type: 'text', text: 'sub1 mock' }, { type: 'text', text: 'sub2 mock' }, { type: 'text', text: 'sub3 mock' }]
   }, {
     active: true,
-    subs: [{ type: 'text', text: 'sub1 mock' }, { type: 'text', text: 'sub2 mock' }]
+    subs: [labelsExercise, { type: 'text', text: 'sub2 mock' }]
   }, {
     active: false,
     subs: [{ type: 'text', text: 'sub1 mock' }, { type: 'text', text: 'sub2 mock' }, { type: 'text', text: 'sub3 mock' }]
@@ -92,6 +87,71 @@ angular.module('app.exercises').factory('Exercises', ["$rootScope", function ($r
     return angular.extend({}, currentPosition);
   }
 }]);
+angular.module('app.exercises').directive('exercise', function () {
+  Exercise.$inject = ["Exercises", "$rootScope"];
+  return {
+    restrict: 'E',
+    templateUrl: 'exercises/exercise.html',
+    controller: Exercise,
+    controllerAs: 'Exercise'
+  };
+
+  function Exercise(Exercises, $rootScope) {
+    var _this = this;
+
+    this.current = Exercises.getCurrent();
+    this.check = false;
+    this.switchCheck = function () {
+      _this.check = !_this.check;
+    };
+
+    this.switchImg = function () {
+      if (_this.check) {
+        return 'images/icons/refresh_white.png';
+      } else {
+        return 'images/icons/tick_white.png';
+      }
+    };
+
+    $rootScope.$on('app.exercises::new-position', function () {
+      return _this.current = Exercises.getCurrent();
+    });
+  }
+});
+angular.module('app.exercises').directive('labelsExercise', function () {
+  LabelsExercise.$inject = ["$scope"];
+  return {
+    restrict: 'E',
+    templateUrl: 'exercises/labels.html',
+    controller: LabelsExercise,
+    controllerAs: 'LabelsExercise',
+    scope: {
+      exercise: '=',
+      check: '='
+    }
+  };
+
+  function LabelsExercise($scope) {
+    $scope.$watch('exercise', function () {
+      return $scope.exercise.words = $scope.exercise.pictures.map(function (picture) {
+        return picture.correct;
+      });
+    });
+
+    this.isCorrect = function (picture) {
+      return picture.answer === picture.correct;
+    };
+  }
+});
+angular.module('app.exercises').directive('textExercise', function () {
+  return {
+    restrict: 'E',
+    templateUrl: 'exercises/text-exercise.html',
+    scope: {
+      exercise: '='
+    }
+  };
+});
 /**
  * Component with next and back buttons.
  */
