@@ -1,0 +1,27 @@
+{
+  "name": "ioki",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sielakos/ioki-rec.git"
+  },
+  "author": "",
+  "license": "None",
+  "bugs": {
+    "url": "https://github.com/sielakos/ioki-rec/issues"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "gulp-angular-templatecache": "~1.6.0",
+    "gulp-concat": "~2.5.2",
+    "gulp": "~3.8.11",
+    "gulp-sass": "~2.0.1",
+    "gulp-babel": "~5.1.0"
+  }
+}

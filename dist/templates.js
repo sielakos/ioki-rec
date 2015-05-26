@@ -1,0 +1,2 @@
+angular.module("templates").run(["$templateCache", function($templateCache) {$templateCache.put("exercises/exercise.html","<div>Exercise</div>");
+$templateCache.put("navigation/navigation.html","<div class=\"navigation\">\nnav\n</div>");}]);
