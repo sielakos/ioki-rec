@@ -1,6 +1,82 @@
 .content {
-  width: 80%; }
+  width: 800px;
+  margin: auto; }
 
 .exercise {
   background-color: #e3e3e3;
-  height: 600px; }
+  height: 550px;
+  padding-top: 10px;
+  padding-left: 40px;
+  padding-right: 40px; }
+
+.navigation {
+  height: 200px; }
+  .navigation::before {
+    content: ' ';
+    width: 100%;
+    position: relative;
+    top: 50px;
+    display: block;
+    border-bottom: 4px #899fe6 solid; }
+
+.nav-buttons {
+  position: relative;
+  top: 32px;
+  left: 25px; }
+  .nav-buttons .next {
+    background-color: #899fe6;
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+    border: none; }
+    .nav-buttons .next.inactive {
+      background-color: #355bd4; }
+    .nav-buttons .next img {
+      position: relative;
+      left: 2px; }
+  .nav-buttons .prev {
+    background-color: #899fe6;
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+    border: none; }
+    .nav-buttons .prev.inactive {
+      background-color: #355bd4; }
+    .nav-buttons .prev img {
+      position: relative;
+      left: -2px; }
+
+.nav-positions {
+  position: relative;
+  left: 200px; }
+
+.nav-position {
+  float: left;
+  display: block;
+  margin-right: 40px;
+  border: 4px #899fe6 solid;
+  border-radius: 100%;
+  background-color: white;
+  position: relative;
+  top: 3px;
+  height: 10px;
+  width: 10px; }
+  .nav-position.big {
+    height: 20px;
+    width: 20px;
+    top: -1px; }
+    .nav-position.big span {
+      display: block;
+      position: relative;
+      left: 5px; }
+  .nav-position.active {
+    border-color: #355bd4; }
+  .nav-position.marker::before {
+    content: ' ';
+    display: block;
+    background-color: #355bd4;
+    border-radius: 100%;
+    width: 10px;
+    height: 10px;
+    position: relative;
+    top: -15px; }

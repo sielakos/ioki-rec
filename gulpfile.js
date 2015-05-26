@@ -3,6 +3,7 @@ var babel = require('gulp-babel');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var templateCache = require('gulp-angular-templatecache');
+var ngAnnotate = require('gulp-ng-annotate');
 
 gulp.task('default', ['babel', 'sass', 'templates']);
 
@@ -14,6 +15,7 @@ gulp.task('babel', function () {
   gulp.src('src/**/*.js')
     .pipe(concat('all.js'))
     .pipe(babel())
+    .pipe(ngAnnotate())
     .pipe(gulp.dest('dist'));
 });
 

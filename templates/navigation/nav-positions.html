@@ -1,0 +1,8 @@
+<div class="nav-positions">
+  <a ng-repeat="position in NavPositions.positions"
+       ng-class="{active: position.active, big: position.big, marker: NavPositions.isCurrentPosition(position)}"
+       ng-click="NavPositions.changePosition(position)"
+       class="nav-position">
+    <span ng-if="position.big">{{position.main + 1}}</span>
+  </a>
+</div>
